@@ -66,6 +66,5 @@ class cpthOne:
     def get_lga(self):
         ans = ''
         for sel in self.selections:
-            print(self.getName[self.getName['lgaCode'] == sel]['lgaName'].values[0])
             ans = ans + self.getName[self.getName['lgaCode'] == sel]['lgaName'].values[0] +', '
         return ans[:-2]

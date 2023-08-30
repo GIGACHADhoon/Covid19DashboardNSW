@@ -5,3 +5,4 @@ plotly
 pyodbc
 geopandas
 gunicorn
+dotenv
