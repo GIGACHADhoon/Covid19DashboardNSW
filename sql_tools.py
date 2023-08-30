@@ -2,6 +2,7 @@ import pyodbc
 from dotenv import load_dotenv
 import os
 import pandas as pd
+import geopandas as gpd
 load_dotenv()
 
 class azSqlDB:
@@ -24,12 +25,12 @@ class azSqlDB:
                         ON c.lgaCode = l.lgaCode"
                 cursor.execute(query)
                 rows = cursor.fetchall()
-                df_dict = {'date':[],'lgaCode':[],'lgaName':[],'ccs':[]}
+                df_dict = {'date':[],'lgaCode':[],'lgaName':[],'Confirmed Cases':[]}
                 for row in rows:
                     df_dict['date'].append(row[0])
                     df_dict['lgaCode'].append(row[1])
                     df_dict['lgaName'].append(row[2])
-                    df_dict['ccs'].append(row[3])
+                    df_dict['Confirmed Cases'].append(row[3])
                 df = pd.DataFrame(df_dict)
                 df['date'] = pd.to_datetime(df['date'])
                 return df

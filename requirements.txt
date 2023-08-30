@@ -3,5 +3,5 @@ pandas
 dash_bootstrap_components
 plotly
 pyodbc
-dotenv
 geopandas
+gunicorn

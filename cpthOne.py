@@ -35,10 +35,10 @@ class cpthOne:
             st = date(2020,1,5)
         if not ed:
             ed = date(2023,8,24)
-        df = self.df[(self.df.date>=pd.to_datetime(st)) & (self.df.date<=pd.to_datetime(ed))].groupby(['lgaCode','lgaName'])['ccs'].sum().reset_index()
+        df = self.df[(self.df.date>=pd.to_datetime(st)) & (self.df.date<=pd.to_datetime(ed))].groupby(['lgaCode','lgaName'])['Confirmed Cases'].sum().reset_index()
         # Base choropleth layer --------------#
-        fig = px.choropleth_mapbox(df,geojson=self.geoJSON,locations='lgaCode',featureidkey="properties.lgaCode", \
-                                   hover_name='lgaName',color='ccs',opacity =0.25)
+        fig = px.choropleth_mapbox(df,geojson=self.geoJSON,locations='lgaCode',labels={'css':'Confirmed Cases'},featureidkey="properties.lgaCode", \
+                                   hover_name='lgaName',color='Confirmed Cases',opacity =0.25,)
 
         # Second layer - Highlights ----------#
         if len(self.selections) > 0:
@@ -47,19 +47,20 @@ class cpthOne:
 
             fig.add_trace(
                 px.choropleth_mapbox(df,geojson=self.get_highlights(),locations='lgaCode',featureidkey="properties.lgaCode", \
-                                     color='ccs',opacity =1).data[0])
+                                     hover_name='lgaName',color='Confirmed Cases',opacity =1).data[0])
 
         fig.update_layout(mapbox_style="open-street-map",
-                        title_text = 'Select the LGA and please Wait a few Seconds',
+                        title_text = 'Select the LGAs and please Wait a few Seconds',
                         mapbox_zoom=6,
-                        mapbox_center={"lat": -33.868820, "lon": 151.209296})
+                        mapbox_center={"lat": -33.868820, "lon": 151.209296},
+                        height = 600)
         return fig
 
     def get_sum(self,st,ed):
         df = self.df[(self.df.date>=pd.to_datetime(st)) & (self.df.date<=pd.to_datetime(ed))]
         ans = 0
         for sel in self.selections:
-            ans += df[df['lgaCode'] == sel]['ccs'].sum()
+            ans += df[df['lgaCode'] == sel]['Confirmed Cases'].sum()
         return ans
     
     def get_lga(self):
