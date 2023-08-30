@@ -70,6 +70,3 @@ def update_figure(clickData,start_date,end_date):
                 inclusive.'
     else:
         return ''
-
-if __name__ == '__main__':
-    app.run(port=8000)
