@@ -72,4 +72,4 @@ def update_figure(clickData,start_date,end_date):
         return ''
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=8000)
