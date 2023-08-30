@@ -13,7 +13,8 @@ class azSqlDB:
         password = os.getenv("pw")
         self.conString = 'Driver={ODBC Driver 18 for SQL Server};SERVER=tcp:'+server+';PORT=1433;DATABASE='+database+ \
             ';UID='+username+';PWD='+ password+';Encrypt=yes;TrustServerCertificate=no;Connection Timeout=60;'
-            
+        print(self.constring)
+
     #input tp specifies the time period of the confirmed cases
     def getCc(self):
         with pyodbc.connect(self.conString) as conn:
