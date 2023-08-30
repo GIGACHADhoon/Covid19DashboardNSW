@@ -9,8 +9,8 @@ class azSqlDB:
     def __init__(self):
         server = os.getenv("server")
         database = os.getenv("database")
-        username = os.getenv("username")
-        password = os.getenv("password")
+        username = os.getenv("us")
+        password = os.getenv("pw")
         self.conString = 'Driver={ODBC Driver 18 for SQL Server};SERVER=tcp:'+server+';PORT=1433;DATABASE='+database+ \
             ';UID='+username+';PWD='+ password+';Encrypt=yes;TrustServerCertificate=no;Connection Timeout=60;'
             
@@ -23,7 +23,7 @@ class azSqlDB:
                         LEFT JOIN  \
                         [dbo].[lgaDetails] l \
                         ON c.lgaCode = l.lgaCode"
-                cursor.execute(query)
+                cursor.execute(query)   
                 rows = cursor.fetchall()
                 df_dict = {'date':[],'lgaCode':[],'lgaName':[],'Confirmed Cases':[]}
                 for row in rows:
