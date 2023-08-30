@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 import os
 import pandas as pd
 import geopandas as gpd
-load_dotenv()
+#load_dotenv()
 
 class azSqlDB:
     def __init__(self):
@@ -13,7 +13,6 @@ class azSqlDB:
         password = os.getenv("pw")
         self.conString = 'Driver={ODBC Driver 18 for SQL Server};SERVER=tcp:'+server+';PORT=1433;DATABASE='+database+ \
             ';UID='+username+';PWD='+ password+';Encrypt=yes;TrustServerCertificate=no;Connection Timeout=60;'
-        print(self.constring)
 
     #input tp specifies the time period of the confirmed cases
     def getCc(self):
