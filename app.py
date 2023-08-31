@@ -5,8 +5,6 @@ from cpthOne import cpthOne
 from datetime import date, datetime
 
 app = Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
-server = app.server
-app.config.suppress_callback_exceptions=True
 fig_object = cpthOne()
 styles = {
     'pre': {
@@ -73,4 +71,5 @@ def update_figure(clickData,start_date,end_date):
     else:
         return ''
     
-app.run_server(debug=False,dev_tools_ui=False,dev_tools_props_check=False)
+if __name__ == '__main__':
+    app.run()
