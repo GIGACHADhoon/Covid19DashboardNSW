@@ -4,7 +4,7 @@ import dash_bootstrap_components as dbc
 from cpthOne import cpthOne
 from datetime import date, datetime
 
-app = Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
+app = Dash(__name__,external_stylesheets=[dbc.themes.BOOTSTRAP])
 fig_object = cpthOne()
 styles = {
     'pre': {
@@ -71,5 +71,3 @@ def update_figure(clickData,start_date,end_date):
     else:
         return ''
     
-if __name__ == '__main__':
-    app.run()
