@@ -11,7 +11,7 @@ class azSqlDB:
         database = os.getenv("database")
         username = os.getenv("us")
         password = os.getenv("pw")
-        self.conString = 'Driver={ODBC Driver 18 for SQL Server};SERVER=tcp:'+server+';PORT=1433;DATABASE='+database+ \
+        self.conString = 'Driver={ODBC Driver 17 for SQL Server};SERVER=tcp:'+server+';PORT=1433;DATABASE='+database+ \
             ';UID='+username+';PWD='+ password+';Encrypt=yes;TrustServerCertificate=no;Connection Timeout=60;'
 
     #input tp specifies the time period of the confirmed cases

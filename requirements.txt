@@ -6,4 +6,4 @@ pyodbc
 geopandas
 gunicorn
 python-dotenv
-msodbcsql18
+msodbcsql17
