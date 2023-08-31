@@ -4,7 +4,7 @@ import dash_bootstrap_components as dbc
 from cpthOne import cpthOne
 from datetime import date, datetime
 
-app = Dash(__name__,external_stylesheets=[dbc.themes.BOOTSTRAP])
+app = Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 fig_object = cpthOne()
 styles = {
     'pre': {
