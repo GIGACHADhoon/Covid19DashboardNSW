@@ -5,5 +5,3 @@ plotly
 pyodbc
 geopandas
 gunicorn
-python-dotenv
-msodbcsql17
