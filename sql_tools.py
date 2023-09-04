@@ -67,3 +67,22 @@ class azSqlDB:
                 df = pd.DataFrame(df_dict)
                 return df
             
+    def getVax(self):
+        with pyodbc.connect(self.conString) as conn:
+            with conn.cursor() as cursor:
+                query = f"SELECT * FROM [dbo].[nswVax]"
+                cursor.execute(query)
+                rows = cursor.fetchall()
+                df_dict = {'lgaName':[],'date':[],'dose1':[],'dose2':[],'dose3':[],'dose4':[]}
+                for row in rows:
+                    df_dict['lgaName'].append(row[0])
+                    df_dict['date'].append(row[1])
+                    df_dict['dose1'].append(row[2])
+                    df_dict['dose2'].append(row[3])
+                    df_dict['dose3'].append(row[4])
+                    df_dict['dose4'].append(row[5])
+
+                df = pd.DataFrame(df_dict)
+                return df
+            
+            
