@@ -25,7 +25,8 @@ tab_covid = dbc.Container(
             ],className="text-center p-3 border"),width=6),
             dbc.Col(
                 html.Div(
-                    [
+                    [   
+                        html.Div([
                         html.H4("Pick a Date Range"),
                         dcc.DatePickerRange(
                                 id='my-date-picker-range',
@@ -33,8 +34,13 @@ tab_covid = dbc.Container(
                                 max_date_allowed=date(2023, 8, 24),
                                 calendar_orientation='vertical',
                                 style={"margin-bottom": "15px", "width": "100%"},  # Make the date picker width 100%
-                            ),   
-                    ],
+                            )],className="text-center p-3 border"),
+                            html.Div(
+                            children=[
+                                html.H4('Selection Summary'),
+                                html.P(id = 'selected_message')
+                            ],className="text-center p-3 border") 
+                        ],
                 className="text-center p-3 border")
             ,width=6),   
         ],align="center",justify="center",), # Center horizontally
@@ -74,7 +80,7 @@ def update_figure(clickData,start_date,end_date):
     return fig_object.get_figure(location,start_date,end_date)
 
 @callback(
-Output('card_data_sum', 'children'),
+Output('selected_message', 'children'),
 Input('geo_nsw', 'clickData'),
 Input('my-date-picker-range', 'start_date'),
 Input('my-date-picker-range', 'end_date'))
@@ -145,4 +151,4 @@ def update_history(clickData,start_date,end_date):
                 figure=fig_object.get_history(None, start_date, end_date)
             ), width=6
         )
-        return [html.H4("Confirmed Cases of Chosen & Neighbouring LGAs"),dbc.Row([original_graph],align="center",justify="center")]
+        return [html.H4("Confirmed Cases of ALL LGAs"),dbc.Row([original_graph],align="center",justify="center")]

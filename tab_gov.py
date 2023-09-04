@@ -1,46 +1,41 @@
-from dash import Dash,  dcc,  callback
-import dash_bootstrap_components as dbc
+import dash
+from dash import callback
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
-import plotly.graph_objs as go
-import pandas as pd
+import random
 
-tab_gov =  dbc.Container(
-    [
-        html.H1("Government Actions Dashboard"),
-        dcc.RangeSlider(
-            id='year-slider',
-            min=2020,
-            max=2023,  # Adjust the end year accordingly
-            step=1,
-            value=[2020, 2023],  # Initial range
-            marks={year: str(year) for year in range(2020, 2024)},
-        ),
-        dcc.Dropdown(
-            id='aspect-filter',
-            options=[
-                {'label': 'Vaccination Policy', 'value': 'vaccination_policy'},
-                {'label': 'Mask Policy', 'value': 'mask_policy'},
-                {'label': 'School Mandates', 'value': 'school_mandates'},
-                {'label': 'Workplace Mandates', 'value': 'workplace_mandates'},
-            ],
-            multi=True,  # Allow multiple selections
-            value=['vaccination_policy'],  # Initial aspect(s)
-        ),
-        dcc.Graph(id='government-actions-chart'),
-    ],
-    fluid=True,
-)
+tab_gov =  html.Div([
+    html.H1("Under Construction", style={'textAlign': 'center'}),
+    html.Div(id='construction-text', children="👷‍♂️ Construction in Progress..."),
+    dcc.Interval(
+        id='construction-interval',
+        interval=1000,  # Update every 1 second
+        n_intervals=0
+    ),
+    html.Div(id='construction-animation', children=""),
+])
 
+# Callback to create a humorous animation
 @callback(
-    Output('government-actions-chart', 'figure'),
-    [Input('year-slider', 'value'),
-     Input('aspect-filter', 'value')]
+    [Output('construction-animation', 'children'),
+     Output('construction-text', 'children')],
+    [Input('construction-interval', 'n_intervals')]
 )
-def update_chart(selected_years, selected_aspects):
-    # Load your government actions data (e.g., from a CSV file)
-    # Filter the data based on selected_years and selected_aspects
-    # Create a Plotly figure to visualize government actions
-    # Return the figure
-    pass  # Replace with your code
+def update_animation(n_intervals):
+    # Define a list of humorous emojis or messages
+    animations = [
+        "👷‍♂️👷‍♀️⚠️",
+        "🔨🪚👷‍♂️",
+        "🚧🏗️🛠️",
+        "⚒️👷‍♀️🔧",
+        "⛏️👷‍♂️👷‍♀️",
+        "⚙️👷‍♂️🔩",
+        "🧰🔨🚦",
+    ]
+
+    # Randomly select an animation and update the message
+    random_animation = random.choice(animations)
+    message = "👷‍♂️ Construction in Progress..."
+
+    return random_animation, message
