@@ -56,6 +56,14 @@ content = [
                     target='_blank',
                 )
             ]),
+            html.Li([
+                "Data Source for the Government Policy Tab can be found ",
+                html.A(
+                    'here',
+                    href='https://github.com/OxCGRT/Australia-covid-policy/tree/main',
+                    target='_blank',
+                )
+            ])
         ]
     ),
     html.Hr(),

@@ -15,7 +15,13 @@ tab_vaccine = dbc.Container(
                 html.Div(children=[
                     html.H4("Please Read"),
                     html.P("This Dashboard provides a view of the Population Coverage (%) for the 4 Covid-19 Vaccinations in NSW LGAs"),
-                    html.P("Pick LGAs to compare on the right"),
+                    html.P("To best utilize this dashboard, please do the following:"),
+                    html.Ul(
+                        [
+                        html.Li("Select the LGAs to investigate using the Dropdown object on the right"),
+                        html.Li("Utilize the plots below to view progress by Vaccination # in the selected LGAs"),
+                        ],style={'text-align': 'left'}
+                    )
                 ], className="text-center p-3 border"),
                 width=8),
             dbc.Col(

@@ -11,14 +11,13 @@ app.layout = dbc.Container([
     dcc.Tabs(
         [
             dcc.Tab(label="Introduction & Credits", children=[tab_intro]),
-            dcc.Tab(label="Government Actions", children=[tab_gov]),
-            dcc.Tab(label="Confirmed Cases", children=[tab_covid]),
+            dcc.Tab(label="Government Actions",  children=[tab_gov]),
+            dcc.Tab(label="Confirmed Cases  ", children=[tab_covid]),
             dcc.Tab(label="Vaccinations", children=[tab_vaccine]),
-        ]
-    )   
-],
+        ])],
     fluid=True,
-    style={'background-color': '#f0f0f0', 'textAlign'   : 'center', 'padding': '20px', 'margin': '0', 'height': '100vh', 'overflow': 'hidden'})
+    style={'background-color': '#f0f0f0', 'textAlign'   : 'center',
+           'padding': '20px', 'margin': '0', 'height': '100vh', 'overflow': 'hidden'})
 
 if __name__=="__main__":
-    app.run()           
+    app.run()

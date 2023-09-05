@@ -13,12 +13,13 @@ tab_covid = dbc.Container(
             dbc.Col(
                     html.Div(children=[
                     html.H4("Please Read"),
-                    html.P("Please use this Chloropleth Map to visualize the density of the Confirmed Cases by LGA  \
-                           doing the following"),
+                    html.P("Please use this Chloropleth Map to visualize the density of the Confirmed Cases by LGA"),
+                    html.P("To best utilize this dashboard, please do the following:"),
                     html.Ul(
                         [
-                        html.Li("Select a Date Range Picker on the Right"),
+                        html.Li("Select a Date Range on the Right"),
                         html.Li("Select an LGA in the Choropleth Map"),
+                        html.Li("A brief description of the selected LGA and dates is shown below the Date Range Picker"),
                         html.Li("View the Line Graphs of the Chosen & Neighbouring LGAs within the chosen date Range"),
                         ],style={'text-align': 'left'}
                     )
@@ -61,11 +62,12 @@ tab_covid = dbc.Container(
             justify="center",  # Center horizontally
         ),
         html.Div(id = 'neighborPlots',className="text-center p-3 border")],className="text-center p-3 border"),
+        html.Br()
     ],
     fluid=True,
     style={'background-color': '#f0f0f0', 'textAlign': 'center', 'padding': '20px', 'margin': '0',
            'height': '100vh', 'overflow': 'auto'},  # Adjust margin, set height, and enable overflow
-)
+)   
 
 @callback(
 Output('geo_nsw', 'figure'),
